@@ -18,7 +18,8 @@ export const SkillTreeStats: QuartzEmitterPlugin = () => {
       const today = new Date().toISOString().split("T")[0]
 
       for (const [_tree, fileData] of content) {
-        const slug = simplifySlug(fileData.slug!)
+        if (!fileData.slug) continue
+        const slug = simplifySlug(fileData.slug)
         const folder = slug.split("/")[0] || "General"
         if (folder === "skill-tree" || folder === "static") continue
 
