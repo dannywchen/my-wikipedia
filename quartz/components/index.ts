@@ -51,4 +51,5 @@ export {
   Comments,
   Flex,
   ConditionalRender,
+  SkillTree,
 }
