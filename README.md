@@ -1,17 +1,9 @@
-# Quartz v4
+# This is my wikipedia (digital garden)
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+> “[One] who keeps learning and never stops learning will find success in new age of software” — Oliver Zou
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
+This was a quote that a previous UPenn Alumni and my former boss reiterated and it has stuck with me ever since. At first, I didn't understand the significance of these words but I later found that the number one way to find success in a career like software is to learn, learn, and never stop learning. I've actually embraced myself with constant learning for a quite a while till I stopped. The moment I stopped, I realized that going back into that flow state of learning as much new content every day is insanely difficult. That's why I decided to make my own wikipedia (digital garden) so I can keep track of all my notes, ideas, projects. I hope this is a great way of keeping myself accountable in the long run.
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+This is built using Quartz and Obsidian.
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
-
-## Sponsors
-
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+I might be building my own framework called skill-trees that could be a cool personal project in the near future.
