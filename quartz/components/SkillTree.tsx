@@ -152,7 +152,7 @@ const SkillTree: QuartzComponent = ({ displayClass, fileData }: QuartzComponentP
   )
 }
 
-SkillTree.css = \`
+SkillTree.css = `
 .skill-tree-root {
   margin-top: 2rem;
   padding: 3rem;
@@ -267,6 +267,6 @@ SkillTree.css = \`
   font-size: 0.8rem;
   padding: 2rem;
 }
-\`
+`
 
 export default (() => SkillTree) satisfies QuartzComponentConstructor
