@@ -1,5 +1,6 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+import { SkillTreeStats } from "./quartz/plugins/emitters/skillTree"
 
 /**
  * Quartz 4 Configuration
@@ -88,7 +89,8 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      Plugin.CustomOgImages(),
+      SkillTreeStats(),
+      // Plugin.CustomOgImages(),
     ],
   },
 }
