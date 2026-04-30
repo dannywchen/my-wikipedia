@@ -10,3 +10,6 @@ This was a quote that a previous UPenn Alumni and my former boss reiterated and 
 This is built using Quartz and Obsidian.
 
 I might be building my own framework called skill-trees that could be a cool personal project in the near future.
+
+## Latest Notes
+- [[Resources/coding-interviews|Coding Interviews]]
