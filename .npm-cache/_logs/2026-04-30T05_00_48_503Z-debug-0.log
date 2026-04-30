@@ -1,0 +1,33 @@
+0 verbose cli /opt/homebrew/Cellar/node/24.3.0/bin/node /opt/homebrew/bin/npm
+1 info using npm@11.11.1
+2 info using node@v24.3.0
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/dannywchen/Documents/GitHub/my-wikipedia/.npmrc
+5 silly config load:file:/Users/dannywchen/.npmrc
+6 verbose config error loading user config Error: EPERM: operation not permitted, open '/Users/dannywchen/.npmrc'
+6 verbose config     at async open (node:internal/fs/promises:640:25)
+6 verbose config     at async readFile (node:internal/fs/promises:1244:14)
+6 verbose config     at async #loadFile (/opt/homebrew/lib/node_modules/npm/node_modules/@npmcli/config/lib/index.js:639:5)
+6 verbose config     at async Config.load (/opt/homebrew/lib/node_modules/npm/node_modules/@npmcli/config/lib/index.js:260:5)
+6 verbose config     at async #load (/opt/homebrew/lib/node_modules/npm/lib/npm.js:95:5)
+6 verbose config     at async Npm.load (/opt/homebrew/lib/node_modules/npm/lib/npm.js:77:14)
+6 verbose config     at async module.exports (/opt/homebrew/lib/node_modules/npm/lib/cli/entry.js:36:37) {
+6 verbose config   errno: -1,
+6 verbose config   code: 'EPERM',
+6 verbose config   syscall: 'open',
+6 verbose config   path: '/Users/dannywchen/.npmrc'
+6 verbose config }
+7 silly config load:file:/opt/homebrew/etc/npmrc
+8 verbose title npm install yargs
+9 verbose argv "install" "yargs" "--cache" ".npm-cache"
+10 verbose logfile logs-max:10 dir:/Users/dannywchen/Documents/GitHub/my-wikipedia/.npm-cache/_logs/2026-04-30T05_00_48_503Z-
+11 verbose logfile /Users/dannywchen/Documents/GitHub/my-wikipedia/.npm-cache/_logs/2026-04-30T05_00_48_503Z-debug-0.log
+12 silly logfile done cleaning log files
+13 http fetch GET https://registry.npmjs.org/npm attempt 1 failed with ENOTFOUND
+14 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+15 silly idealTree buildDeps
+16 silly fetch manifest yargs@^18.0.0
+17 silly packumentCache full:https://registry.npmjs.org/yargs cache-miss
+18 http fetch GET https://registry.npmjs.org/yargs attempt 1 failed with ENOTFOUND
+19 http fetch GET https://registry.npmjs.org/npm attempt 2 failed with ENOTFOUND
+20 http fetch GET https://registry.npmjs.org/yargs attempt 2 failed with ENOTFOUND
