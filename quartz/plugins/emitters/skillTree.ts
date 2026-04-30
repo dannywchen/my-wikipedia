@@ -1,5 +1,6 @@
 import { QuartzEmitterPlugin } from "../types"
 import { SimpleSlug, simplifySlug } from "../../util/path"
+import { write } from "./helpers"
 
 export const SkillTreeStats: QuartzEmitterPlugin = () => {
   return {
@@ -7,7 +8,7 @@ export const SkillTreeStats: QuartzEmitterPlugin = () => {
     getQuartzComponents() {
       return []
     },
-    async emit(ctx, content, _resources): Promise<string[]> {
+    async *emit(ctx, content, _resources) {
       const stats = {
         username: "dannywchen",
         dailyNotes: 0,
@@ -50,13 +51,12 @@ export const SkillTreeStats: QuartzEmitterPlugin = () => {
         console.error("❌ Error syncing Skill Tree stats:", e)
       }
 
-      return [
-        await ctx.argv.output.write({
-          slug: "static/skill-stats" as SimpleSlug,
-          ext: ".json",
-          content: JSON.stringify(stats),
-        }),
-      ]
+      yield write({
+        ctx,
+        content: JSON.stringify(stats),
+        slug: "static/skill-stats" as SimpleSlug,
+        ext: ".json",
+      })
     },
   }
 }
