@@ -8,5 +8,8 @@ related:
 author:
 description:
 aliases:
+  - "Resources/Coding Interviews"
+  - "Resources/Coding-Interviews"
+  - "resources/coding-interviews"
 ---
 https://www.youtube.com/watch?v=sLJ6p5rSnuo
