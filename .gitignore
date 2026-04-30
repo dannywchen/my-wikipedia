@@ -9,3 +9,6 @@ tsconfig.tsbuildinfo
 private/
 .replit
 replit.nix
+.smart-env/
+.npm-cache/
+npm-cache/
