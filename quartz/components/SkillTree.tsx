@@ -222,6 +222,51 @@ SkillTree.css = \`
   width: 100%;
   height: 100%;
 }
+
+.inventory-section {
+  margin-top: 3rem;
+  border-top: 1px solid #222;
+  padding-top: 2rem;
+}
+
+.inventory-section h3 {
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.inventory-item {
+  aspect-ratio: 1;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.inventory-item:hover {
+  transform: translateY(-5px);
+  border-color: #00f2ff;
+}
+
+.empty-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #444;
+  font-family: 'JetBrains Mono';
+  font-size: 0.8rem;
+  padding: 2rem;
+}
 \`
 
 export default (() => SkillTree) satisfies QuartzComponentConstructor
