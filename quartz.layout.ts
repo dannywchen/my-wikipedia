@@ -67,12 +67,7 @@ export const defaultContentPageLayout: PageLayout = {
       condition: (page) => page.fileData.slug === "index",
     }),
     Component.ConditionalRender({
-      component: Component.Graph({
-        localGraph: {
-          repelForce: 0.2,
-          linkDistance: 20,
-        }
-      }),
+      component: Component.Graph(),
       condition: (page) => page.fileData.slug !== "index",
     }),
     Component.Backlinks(),
