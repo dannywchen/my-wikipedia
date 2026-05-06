@@ -1,7 +1,7 @@
 ---
 class:
   - note
-created_on: "[[04-30-2026]]"
+created_on: "04-30-2026"
 tags:
 source:
 related:
