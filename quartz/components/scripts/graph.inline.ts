@@ -87,6 +87,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     showTags,
     focusOnHover,
     enableRadial,
+    showFolders,
   } = JSON.parse(graph.dataset["cfg"]!) as D3Config
 
   const data: Map<SimpleSlug, ContentDetails> = new Map(
@@ -120,6 +121,14 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
         links.push({ source: source, target: tag })
       }
     }
+
+    if (showFolders) {
+      const segments = source.split("/")
+      if (segments.length > 1) {
+        const folder = segments.slice(0, -1).join("/") as SimpleSlug
+        links.push({ source: source, target: folder })
+      }
+    }
   }
 
   const neighbourhood = new Set<SimpleSlug>()
@@ -144,7 +153,15 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   }
 
   const nodes = [...neighbourhood].map((url) => {
-    const text = url.startsWith("tags/") ? "#" + url.substring(5) : (data.get(url)?.title ?? url)
+    let text = data.get(url)?.title ?? url
+    if (url.startsWith("tags/")) {
+      text = "#" + url.substring(5)
+    } else if (url === "index") {
+      text = "Home"
+    } else if (!data.has(url)) {
+      // it's likely a folder node if it's not in the data index
+      text = url.split("/").pop() ?? url
+    }
     return {
       id: url,
       text,
@@ -196,9 +213,11 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   // calculate color
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
+    const isTag = d.id.startsWith("tags/")
+    const isFolder = !data.has(d.id) && !isTag
     if (isCurrent) {
       return computedStyleMap["--secondary"]
-    } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
+    } else if (visited.has(d.id) || isTag || isFolder) {
       return computedStyleMap["--tertiary"]
     } else {
       return computedStyleMap["--gray"]
@@ -391,6 +410,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
 
     let oldLabelOpacity = 0
     const isTagNode = nodeId.startsWith("tags/")
+    const isFolderNode = !data.has(nodeId) && !isTagNode
     const gfx = new Graphics({
       interactive: true,
       label: nodeId,
@@ -399,7 +419,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       cursor: "pointer",
     })
       .circle(0, 0, nodeRadius(n))
-      .fill({ color: isTagNode ? computedStyleMap["--light"] : color(n) })
+      .fill({ color: (isTagNode || isFolderNode) ? computedStyleMap["--light"] : color(n) })
       .on("pointerover", (e) => {
         updateHoverInfo(e.target.label)
         oldLabelOpacity = label.alpha
@@ -415,7 +435,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
         }
       })
 
-    if (isTagNode) {
+    if (isTagNode || isFolderNode) {
       gfx.stroke({ width: 2, color: computedStyleMap["--tertiary"] })
     }
 
