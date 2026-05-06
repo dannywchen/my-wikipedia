@@ -19,11 +19,11 @@ Today's Heatmap:
 
 ![[SPY Option experiments Day 1.png|360]]
 
-*Extra Notes:* Earlier in the day around 11AM, there were news about how Iran strikes back on USA, but markets didn't budge too much (oscillated around $722-723).
+*Extra Notes:* Earlier in the day around 11AM, there were news about how Iran strikes back on USA, but markets didn't budge too much (oscillated around \$722-723).
 
-**Thesis:** The play I did today was one contract of SPY calls at 724$. The conclusion I made after seeing the heatmap was that there were huge concentrations/magnets around 725-726 making it more bullish for SPY to go higher to those levels. 
+**Thesis:** The play I did today was one contract of SPY calls at \$724. The conclusion I made after seeing the heatmap was that there were huge concentrations/magnets around 725-726 making it more bullish for SPY to go higher to those levels. 
 
-**Results:** Around markets close, SPY closed at $723.77, however that is after SPY has broke through $724.5 which is where I sold my contract for the 46.48% returns. The heatmap in today's scenario was in fact relatively accurate as to where the price levels could head to because in the after market, SPY went to new ATH hitting $727+, pushing past the shown 725-726 levels.
+**Results:** Around markets close, SPY closed at \$723.77, however that is after SPY has broke through \$724.5 which is where I sold my contract for the 46.48% returns. The heatmap in today's scenario was in fact relatively accurate as to where the price levels could head to because in the after market, SPY went to new ATH hitting \$727+, pushing past the shown 725-726 levels.
 ![[Pasted image 20260505212215.png|594]]
 
 TLDR;
