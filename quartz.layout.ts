@@ -56,9 +56,9 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.Graph({
         localGraph: {
           depth: -1,
-          repelForce: 0.5,
+          repelForce: 0.2,
           centerForce: 0.3,
-          linkDistance: 30,
+          linkDistance: 20,
           fontSize: 0.6,
           showTags: true,
           showFolders: true,
@@ -67,7 +67,12 @@ export const defaultContentPageLayout: PageLayout = {
       condition: (page) => page.fileData.slug === "index",
     }),
     Component.ConditionalRender({
-      component: Component.Graph(),
+      component: Component.Graph({
+        localGraph: {
+          repelForce: 0.2,
+          linkDistance: 20,
+        }
+      }),
       condition: (page) => page.fileData.slug !== "index",
     }),
     Component.Backlinks(),

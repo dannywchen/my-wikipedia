@@ -57,6 +57,17 @@ function getVisited(): Set<SimpleSlug> {
   return new Set(JSON.parse(localStorage.getItem(localStorageKey) ?? "[]"))
 }
 
+const positionStorageKey = "graph-positions"
+function getPositions(): Record<SimpleSlug, { x: number; y: number }> {
+  return JSON.parse(localStorage.getItem(positionStorageKey) ?? "{}")
+}
+
+function savePosition(slug: SimpleSlug, x: number, y: number) {
+  const positions = getPositions()
+  positions[slug] = { x, y }
+  localStorage.setItem(positionStorageKey, JSON.stringify(positions))
+}
+
 function addToVisited(slug: SimpleSlug) {
   const visited = getVisited()
   visited.add(slug)
@@ -152,6 +163,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     if (showTags) tags.forEach((tag) => neighbourhood.add(tag))
   }
 
+  const positions = getPositions()
   const nodes = [...neighbourhood].map((url) => {
     let text = data.get(url)?.title ?? url
     if (url.startsWith("tags/")) {
@@ -162,11 +174,19 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       // it's likely a folder node if it's not in the data index
       text = url.split("/").pop() ?? url
     }
-    return {
+
+    const nodeData: NodeData = {
       id: url,
       text,
       tags: data.get(url)?.tags ?? [],
     }
+
+    if (positions[url]) {
+      nodeData.fx = positions[url].x
+      nodeData.fy = positions[url].y
+    }
+
+    return nodeData
   })
   const graphData: { nodes: NodeData[]; links: LinkData[] } = {
     nodes,
@@ -495,12 +515,20 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
         })
         .on("end", function dragended(event) {
           if (!event.active) simulation.alphaTarget(0)
-          event.subject.fx = null
-          event.subject.fy = null
           dragging = false
 
-          // if the time between mousedown and mouseup is short, we consider it a click
-          if (Date.now() - dragStartTime < 500) {
+          const initPos = event.subject.__initialDragPos
+          const dx = event.x - initPos.x
+          const dy = event.y - initPos.y
+          const distance = Math.sqrt(dx * dx + dy * dy)
+
+          // if we moved the node, save its position
+          if (distance > 5) {
+            event.subject.fx = event.subject.x
+            event.subject.fy = event.subject.y
+            savePosition(event.subject.id, event.subject.x, event.subject.y)
+          } else {
+            // it was a click, navigate
             const node = graphData.nodes.find((n) => n.id === event.subject.id) as NodeData
             const targ = resolveRelative(fullSlug, node.id)
             window.spaNavigate(new URL(targ, window.location.toString()))
