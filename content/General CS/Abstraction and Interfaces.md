@@ -37,3 +37,7 @@ public class firstOne implements interfaceOne{
 For interfaces, a class can inherit from multiple interfaces. Normally inheritance you can only inherit from one parent, but the incentive of interfaces is so you can have multiple parents.
 
 > interfaces are collections of abstract methods
+
+Interfaces contains only abstract methods and constants. They are similar to abstract class but the intent of it is to specify behavior for objects.
+	For example specify that objects are comparable, edible, cloneable.
+	Interface extends multiple interfaces, inheritance multiple interface
